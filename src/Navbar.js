@@ -37,7 +37,7 @@ const Navbar = ({ setToggle, toggle }) => {
   const [value, setValue] = useState(0);
   useEffect(() => {
     var myHeaders = new Headers();
-    myHeaders.append('apikey', 'jxG97c8AXMeiH3qBz4LPFy5zCRc7yCMu');
+    myHeaders.append('apikey', '1RbWsMH12XqwS1l8wR5QA558BUuFzL1u');
     var requestOptions = {
       method: 'GET',
       redirect: 'follow',
