@@ -17,12 +17,13 @@ const Container = styled.div`
 `;
 
 const API_endpoint = 'https://api.openweathermap.org/data/2.5/weather?';
-const API_key = 'ab631d0dcad9307804c50fc29aa8fd88';
+const API_key = 'ab631d0dcad9307804c50fc29aa8fd88'; //api key taken from openweathermap.org
 const Footer = () => {
   const [latitude, setLatitude] = useState('');
   const [longitude, setLongitude] = useState('');
   const [temp, setTemp] = useState('');
   useEffect(() => {
+    //fetching data of current user's location
     const fetchData = async () => {
       navigator.geolocation.getCurrentPosition((position) => {
         console.log(position);
@@ -40,6 +41,7 @@ const Footer = () => {
     fetchData();
   }, [latitude, longitude, temp]);
   return (
+    //Current day is found from moment.js library
     <Container>
       <h1 style={{ color: 'white', fontFamily: 'cursive' }}>
         {moment().format('dddd')}, {Math.round(temp * 100) / 100}&deg;C

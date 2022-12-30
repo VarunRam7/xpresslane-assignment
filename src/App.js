@@ -6,6 +6,7 @@ import Navbar from './Navbar';
 import { useState } from 'react';
 
 function App() {
+  //toggle used to switch between dark and light mode
   const [toggle, setToggle] = useState(false);
   return (
     <>

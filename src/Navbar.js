@@ -37,12 +37,13 @@ const Navbar = ({ setToggle, toggle }) => {
   const [value, setValue] = useState(0);
   useEffect(() => {
     var myHeaders = new Headers();
-    myHeaders.append('apikey', '1RbWsMH12XqwS1l8wR5QA558BUuFzL1u');
+    myHeaders.append('apikey', '1RbWsMH12XqwS1l8wR5QA558BUuFzL1u'); //api key for exchange rates data api
     var requestOptions = {
       method: 'GET',
       redirect: 'follow',
       headers: myHeaders,
     };
+    //fetching exchange rates data for USD to INR
     fetch(
       `https://api.apilayer.com/exchangerates_data/convert?to=INR&from=USD&amount=${value}`,
       requestOptions

@@ -40,6 +40,10 @@ const CardContainer = styled.div`
   gap: 2em;
   overflow-x: auto;
   padding-left: 10px;
+  .MuiTypography-h5 {
+    width: 150px;
+    text-align: center;
+  }
 `;
 const Home = ({ toggle }) => {
   const [components, setComponents] = useState(['']);

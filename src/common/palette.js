@@ -1,3 +1,4 @@
+//palette is introduced for using consistent colors in the webpage
 export const palette = {
   colors: {
     white: '#ffffff',
