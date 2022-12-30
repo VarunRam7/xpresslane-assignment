@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Switch from '@material-ui/core/Switch';
 import { TextField } from '@material-ui/core';
+import { palette } from './common/palette';
 import styled from '@emotion/styled';
 
 const Container = styled.div`
@@ -11,19 +12,29 @@ const Container = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: ${(toggle) => (toggle ? 'white' : 'white')};
+  font-family: cursive;
+  background-color: ${palette.colors.darkGrey};
   .MuiFormControl-root {
     width: 75px;
+  }
+  .MuiTypography-body1 {
+    color: ${palette.colors.white};
+  }
+  .MuiInputLabel-root {
+    color: white;
+  }
+  .MuiInputBase-input {
+    color: white;
   }
 `;
 
 const NavbarTextWrapper = styled.h3`
-  color: ${(toggle) => (toggle ? 'black' : 'black')};
+  color: ${palette.colors.white};
   width: 200px;
 `;
-const Navbar = (props) => {
+const Navbar = ({ setToggle, toggle }) => {
   const [exchangeRate, setExchangeRate] = useState();
-  const [value, setValue] = useState(1);
+  const [value, setValue] = useState(0);
   useEffect(() => {
     var myHeaders = new Headers();
     myHeaders.append('apikey', 'jxG97c8AXMeiH3qBz4LPFy5zCRc7yCMu');
@@ -41,7 +52,7 @@ const Navbar = (props) => {
       .catch((error) => console.log('error', error));
   }, [value, exchangeRate]);
   return (
-    <Container toggle={props.toggle}>
+    <Container>
       <div style={{ display: 'flex', flexDirection: 'row', gap: '3em' }}>
         <TextField
           id='outlined-number'
@@ -50,27 +61,38 @@ const Navbar = (props) => {
           InputLabelProps={{
             shrink: true,
           }}
+          defaultValue='0'
           onChange={(e) => {
             setValue(e.target.value);
           }}
         />
-        <NavbarTextWrapper toggle={props.toggle}>
-          INR :: {exchangeRate}
-        </NavbarTextWrapper>
+        <NavbarTextWrapper>INR :: {exchangeRate}</NavbarTextWrapper>
       </div>
-      <NavbarTextWrapper toggle={props.toggle}>NAVBAR</NavbarTextWrapper>
-      <FormControlLabel
-        style={{ marginLeft: '1em' }}
-        control={
-          <Switch
-            checked={props.toggle}
-            onChange={() => {
-              props.setToggle(!props.toggle);
-            }}
-            color='primary'
-          />
-        }
-      />
+      <NavbarTextWrapper>NAVBAR</NavbarTextWrapper>
+      <div
+        style={{
+          display: 'flex',
+          flexDirection: 'row',
+          fontSize: '1rem',
+          fontWeight: '400px',
+          color: `${palette.colors.white}`,
+        }}
+      >
+        <h4>Dark</h4>
+        <FormControlLabel
+          style={{ marginLeft: '1em' }}
+          control={
+            <Switch
+              checked={toggle}
+              onChange={() => {
+                setToggle(!toggle);
+              }}
+              color='primary'
+            />
+          }
+        />
+        <h4>Light</h4>
+      </div>
     </Container>
   );
 };

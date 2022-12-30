@@ -7,11 +7,10 @@ import { useState } from 'react';
 
 function App() {
   const [toggle, setToggle] = useState(false);
-
   return (
     <>
-      <Navbar setToggle={setToggle} />
-      <Home />
+      <Navbar setToggle={setToggle} toggle={toggle} />
+      <Home toggle={toggle} />
       <Footer />
     </>
   );

@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import axios from 'axios';
+import { palette } from './common/palette';
 import styled from '@emotion/styled';
 
 const moment = require('moment');
@@ -11,7 +12,7 @@ const Container = styled.div`
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  background-color: black;
+  background-color: ${palette.colors.darkGrey};
   padding-right: 1em;
 `;
 

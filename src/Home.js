@@ -3,15 +3,17 @@ import React, { useState } from 'react';
 
 import Card from '@material-ui/core/Card';
 import Typography from '@material-ui/core/Typography';
+import { palette } from './common/palette';
 import styled from '@emotion/styled';
 
 const Container = styled.div`
-  padding-top: 3em;
+  padding-top: 5vh;
   gap: 2em;
   min-width: 90vw;
-  height: 80vh;
+  height: 75vh;
   display: flex;
   flex-direction: column;
+  background-color: ${(props) => (props.toggle ? 'white' : 'black')};
 `;
 
 const InputFieldContainer = styled.div`
@@ -20,7 +22,15 @@ const InputFieldContainer = styled.div`
   flex-direction: row;
   .MuiButton-root {
     min-width: 175px;
-    color: #3f51b5;
+    color: ${palette.colors.primary};
+  }
+  .MuiInputBase-inputTypeSearch {
+    color: ${palette.colors.primary};
+  }
+
+  .MuiFormLabel-root {
+    color: ${(props) =>
+      props.toggle ? `${palette.colors.black}` : `${palette.colors.white}`};
   }
 `;
 
@@ -29,8 +39,9 @@ const CardContainer = styled.div`
   flex-direction: row;
   gap: 2em;
   overflow-x: auto;
+  padding-left: 10px;
 `;
-const Home = () => {
+const Home = ({ toggle }) => {
   const [components, setComponents] = useState(['']);
 
   const [text, setText] = useState('');
@@ -39,9 +50,10 @@ const Home = () => {
   }
 
   return (
-    <Container>
-      <InputFieldContainer>
+    <Container toggle={toggle}>
+      <InputFieldContainer toggle={toggle}>
         <TextField
+          style={{ borderBottom: '0.5px solid white' }}
           id='filled-search'
           label='Input field'
           type='search'
